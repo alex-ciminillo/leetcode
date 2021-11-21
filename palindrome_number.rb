@@ -65,8 +65,20 @@ def is_palindrome(x)
     x.to_s.reverse == x.to_s
 end
 
+# without turning number into string (OPTIMIZED)
+def is_palindrome(x)
+    return true if x > -1 && x < 10
+    return false if x < 0 || (x % 10) == 0
+    reverse_num = 0
+    while x > reverse_num
+        reverse_num = (reverse_num*10) + (x % 10)
+        x /= 10
+    end
+    return true if reverse_num == x || (reverse_num / 10) == x
+    false
+end
 
-p is_palindrome(30000100003)
+p is_palindrome(0)
 
 
 
