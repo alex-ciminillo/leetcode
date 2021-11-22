@@ -35,28 +35,54 @@
 
 
 
+# def is_valid(s)
+#     open_par = {
+#         ")"=> "(",
+#         "]"=> "[",
+#         "}"=> "{"
+#     }
+#     close_par = ")]}"
+#     init_par = "([{"
+#     current = [s[0]]
+#     return false if close_par.include?(current[-1]) || init_par.include?(s[-1])
+#     (1...s.length).each do |idx|
+#         if idx == (s.length - 1)
+#             return false if current[-1] != open_par[s[idx]] || current.length > 1
+#         elsif close_par.include?(s[idx])
+#             return false if current[-1] != open_par[s[idx]]
+#             current.pop
+#         else
+#             current << s[idx]
+#         end
+#     end
+#     true
+# end
+
+
 def is_valid(s)
-    open_par = {
+    hash = {
         ")"=> "(",
         "]"=> "[",
         "}"=> "{"
-    }
-    close_par = ")]}"
-    init_par = "([{"
-    current = [s[0]]
-    return false if close_par.include?(current[-1]) || init_par.include?(s[-1])
-    (1...s.length).each do |idx|
-        if idx == (s.length - 1)
-            return false if current[-1] != open_par[s[idx]] || current.length > 1
-        elsif close_par.include?(s[idx])
-            return false if current[-1] != open_par[s[idx]]
-            current.pop
+            }
+    stack = []
+    s.each_char do |char|
+        if hash.has_key?(char)
+            if stack[-1] == hash[char]
+                stack.pop
+            else
+                stack << char
+            end
         else
-            current << s[idx]
+            stack << char
         end
     end
-    true
+    stack.empty?
 end
+
+
+
+
 s = "([]"
 p is_valid(s)
 
