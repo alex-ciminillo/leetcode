@@ -59,6 +59,7 @@
 # end
 
 
+#optimized
 def is_valid(s)
     hash = {
         ")"=> "(",
