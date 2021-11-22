@@ -19,18 +19,36 @@
 # -100 <= Node.val <= 100
 # Both l1 and l2 are sorted in non-decreasing order.
 
+#first answer
+# def merge_two_lists(l1, l2)
+#     val_arr = []
+#     val = 0
+#     node = l1
+#     until node.nil?
+#         val_arr << node.val
+#         node = node.next
+#     end
+#     val = 0
+#     node = l2
+#     until node.nil?
+#         val_arr << node.val
+#         node = node.next
+#     end
+# end
+
+#optimized (recursive and self-sorting)
 def merge_two_lists(l1, l2)
-    val_arr = []
-    val = 0
-    node = l1
-    until node.nil?
-        val_arr << node.val
-        node = node.next
-    end
-    val = 0
-    node = l2
-    until node.nil?
-        val_arr << node.val
-        node = node.next
+    if l1 == nil
+        return l2
+    elsif l2 == nil
+        return l1
+    elsif l1.val > l2.val
+        merge_two_lists(l1.next, l2)
+        return l1
+    else
+        merge_two_lists(l2.next, l1)
+        return l2 
     end
 end
+
+
