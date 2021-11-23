@@ -37,18 +37,47 @@
 # end
 
 #optimized (recursive and self-sorting)
-def merge_two_lists(l1, l2)
-    if l1 == nil
-        return l2
-    elsif l2 == nil
-        return l1
-    elsif l1.val > l2.val
-        merge_two_lists(l1.next, l2)
-        return l1
-    else
-        merge_two_lists(l2.next, l1)
-        return l2 
+# def merge_two_lists(l1, l2)
+#     if l1 == nil
+#         return l2
+#     elsif l2 == nil
+#         return l1
+#     elsif l1.val > l2.val
+#         merge_two_lists(l1.next, l2)
+#         return l1
+#     else
+#         merge_two_lists(l2.next, l1)
+#         return l2 
+#     end
+# end
+
+class ListNode
+    attr_accessor :val, :next
+    def initialize(val = 0, _next = nil)
+        @val = val
+        @next = _next
     end
 end
+
+# optimized (iteration)
+def merge_two_lists(l1, l2)
+    combined = ListNode.new(-1)
+    combined_node = combined
+    until l1.nil? || l2.nil?
+        if l1.val <= l2.val
+            combined_node.next = l1
+            l1 = l1.next
+        else
+            combined_node.next = l2
+            l2 = l2.next
+        end 
+        combined_node = combined_node.next
+    end
+
+    combined_node.next = l1.nil? ? l2 : l1
+    return combined.next
+end
+
+
 
 
