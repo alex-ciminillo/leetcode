@@ -74,11 +74,5 @@ def remove_duplicates(nums)
     nums
 end
 
-
-
-
-
-
-
 nums = [1,1,2]
 p remove_duplicates(nums)
