@@ -30,31 +30,44 @@
 #try coding another solution using the divide and conquer approach, which is more subtle.
 
 
-#first attempt - time limit exceeded for calculation
+#first attempt - time limit exceeded for calculation - O(n)
+# def max_sub_array(nums)
+#     return nums.max if nums.all? { |num| num < 0 }
+#     current_array = [nums[0]]
+#     old_arr = [nums[0]]
+#     old_sum = nums[0]
+#     current_sum = nums[0]
+#     nums = nums[1..-1]
+#     nums.each do |num|
+#         if current_sum < 0
+#             current_sum = 0
+#             current_array = []
+#         end
+#         current_sum += num
+#         current_array << num
+#         if current_sum < 0
+#             current_sum = 0
+#             current_array = []
+#         end
+#         if current_sum > old_sum
+#             old_sum = current_sum
+#             old_arr = current_array.dup
+#         end
+#     end
+#     old_arr.sum
+# end
+
+
+#optimized
 def max_sub_array(nums)
-    return nums.max if nums.all? { |num| num < 0 }
-    current_array = [nums[0]]
-    old_arr = [nums[0]]
-    old_sum = nums[0]
-    current_sum = nums[0]
+    max_arr = nums[0]
+    current_arr = nums[0]
     nums = nums[1..-1]
     nums.each do |num|
-        if current_sum < 0
-            current_sum = 0
-            current_array = []
-        end
-        current_sum += num
-        current_array << num
-        if current_sum < 0
-            current_sum = 0
-            current_array = []
-        end
-        if current_sum > old_sum
-            old_sum = current_sum
-            old_arr = current_array.dup
-        end
+        current_arr = num > current_arr + num ? num : current_arr + num
+        max_arr = current_arr > max_arr ? current_arr : max_arr
     end
-    old_arr.sum
+    max_arr
 end
 
 nums = [-2,1]
