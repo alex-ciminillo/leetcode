@@ -37,43 +37,59 @@
 
 
 # first attempt recursion
-def searchInsert(self, nums: List[int], target: int) -> int:
+# def searchInsert(self, nums: List[int], target: int) -> int:
         
-    middle = len(nums) // 2
+#     middle = len(nums) // 2
     
-    if not nums:
-        return 1
+#     if not nums:
+#         return 1
     
-    print(f'{nums[middle]}')
+#     print(f'{nums[middle]}')
     
-    if target == nums[middle]:
-        return middle
+#     if target == nums[middle]:
+#         return middle
     
-    if nums[middle] < target and len(nums) == 1:
-        return (middle + 1)
+#     if nums[middle] < target and len(nums) == 1:
+#         return (middle + 1)
     
-    if nums[middle] > target and len(nums) == 1:
-        return middle
+#     if nums[middle] > target and len(nums) == 1:
+#         return middle
     
-    if nums[middle] < target and nums[(middle + 1)] > target:
-        return (middle + 1)
+#     if nums[middle] < target and nums[(middle + 1)] > target:
+#         return (middle + 1)
     
-    if nums[middle] > target and nums[(middle - 1)] < target:
-        return middle
+#     if nums[middle] > target and nums[(middle - 1)] < target:
+#         return middle
     
-    left = nums[0:middle]
-    right = nums[(middle + 1):]
-    print('--------')
-    print(f'{nums[middle]}')
-    print(f'{right}')
-    print(f'{left}')
-    if target > left[-1]:
-        print("hi")
-        find = self.searchInsert(right, target)
-        return middle + 1 + find
-    else:
-        find = self.searchInsert(left, target)
-        return find
+#     left = nums[0:middle]
+#     right = nums[(middle + 1):]
+#     print('--------')
+#     print(f'{nums[middle]}')
+#     print(f'{right}')
+#     print(f'{left}')
+#     if target > left[-1]:
+#         print("hi")
+#         find = self.searchInsert(right, target)
+#         return middle + 1 + find
+#     else:
+#         find = self.searchInsert(left, target)
+#         return find
+
+
+# optimized iteration
+from typing import List
+
+def searchInsert(self, nums: List[int], target: int) -> int:
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        middle = (left + right) // 2
+        if nums[middle] == target:
+            return middle
+        if nums[middle] > target:
+            right = middle - 1
+        else:
+            left = middle + 1
+    return left
 
 
 
