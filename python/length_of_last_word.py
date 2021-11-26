@@ -37,13 +37,17 @@
 
 
 #optimized
+# def lengthOfLastWord(s: str) -> int:
+#     s = s.split(' ')
+#     i = len(s) - 1
+#     while i >= 0:
+#         if len(s[i]) != 0:
+#             return len(s[i])
+#         i -= 1
+
+#optimized even more
 def lengthOfLastWord(s: str) -> int:
-    s = s.split(' ')
-    i = len(s) - 1
-    while i >= 0:
-        if len(s[i]) != 0:
-            return len(s[i])
-        i -= 1
+    return 0 if not s or s.isspace() else len(s.split()[-1])
 
 s = '   fly me   to   the moon  '
 print(lengthOfLastWord(s))
