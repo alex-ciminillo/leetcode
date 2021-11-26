@@ -73,10 +73,3 @@ end
 nums = [-2,1]
 p max_sub_array(nums)
 
-
-
-
-
-
-
-
