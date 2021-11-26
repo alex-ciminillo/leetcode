@@ -79,7 +79,7 @@
 # optimized iteration
 from typing import List
 
-def searchInsert(self, nums: List[int], target: int) -> int:
+def searchInsert(nums: List[int], target: int) -> int:
     left, right = 0, len(nums) - 1
     while left <= right:
         middle = (left + right) // 2
@@ -91,8 +91,9 @@ def searchInsert(self, nums: List[int], target: int) -> int:
             left = middle + 1
     return left
 
-
-
+arr = [0,1,2,3,4,6,7,8,9]
+target = 5
+print(searchInsert(arr,target))
 
 
 
