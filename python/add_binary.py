@@ -51,13 +51,13 @@
 
 
 def addBinary(a: str, b: str) -> str:
-    x = 100
-    y = 5678
+    x = 1
+    y = 3
     while y:
         answer = x ^ y
         carry = (x & y) << 1
         x, y = answer, carry
-    return x
+    return bin(x)[2:]
 
 
 a = "1010"
