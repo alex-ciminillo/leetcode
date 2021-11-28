@@ -42,21 +42,38 @@
 
 from typing import List
 
-#first attempt, does not work past (n)e+18
+#first attempt, does not work past (n)e+18 - turn array to number and then back to array
 
-def plusOne(digits: List[int]) -> List[int]:
-        number = 0
-        while digits:
-            number += digits[0]
-            number *= 10
-            digits = digits[1:]
-        number = (number / 10) + 1
-        print(f'{number}')
-        number_arr = []
-        while number:
-            number_arr.insert(0, int(number % 10))
-            number //= 10
-        return number_arr
+# def plusOne(digits: List[int]) -> List[int]:
+#         number = 0
+#         while digits:
+#             number += digits[0]
+#             number *= 10
+#             digits = digits[1:]
+#         number = (number / 10) + 1
+#         print(f'{number}')
+#         number_arr = []
+#         while number:
+#             number_arr.insert(0, int(number % 10))
+#             number //= 10
+#         return number_arr
+
+# optimized - adds one if not a nine, and turns nines to a zero
+def plusOne(self, digits: List[int]) -> List[int]:
+    length = len(digits)
+    
+    for i in range(length):
+        idx = length - 1 - i
+        if digits[idx] == 9:
+            digits[idx] = 0
+        else:
+            digits[idx] += 1
+            return digits
+        
+    return [1] + digits
+
+
+
 
 digits = [1,2,3]
 print(plusOne(digits))
