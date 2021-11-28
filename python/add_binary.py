@@ -18,11 +18,49 @@
 # Each string does not contain leading zeros except for the zero itself.
 
 
+# first attempt, built in conversion function, limited to low ammount of numbers
+# def addBinary(a: str, b: str) -> str:
+#     return '{0:b}'.format(int(a,2) + int(b, 2))
+
+
+# using carry method
+# def addBinary(a: str, b: str) -> str:
+    # length = max(len(a), len(b))
+    # a, b = a.zfill(length), b.zfill(length)
+    # ans = []
+    # carry = 0
+
+    # for i in range(length - 1, -1, -1):
+    #     if a[i] == '1':
+    #         carry += 1
+    #     if b[i] == '1':
+    #         carry += 1
+        
+    #     if carry % 2 == 1:
+    #         ans = ['1'] + ans
+    #     else:
+    #         ans = ['0'] + ans
+
+    #     carry //= 2
+
+    # if carry == 1:
+    #     ans = ['1'] + ans
+    
+    # return ''.join(ans)
+
+
 
 def addBinary(a: str, b: str) -> str:
-    return '{0:b}'.format(int(a,2) + int(b, 2))
+    x = 100
+    y = 5678
+    while y:
+        answer = x ^ y
+        carry = (x & y) << 1
+        x, y = answer, carry
+    return x
 
-a = "1"
-b = "11"
+
+a = "1010"
+b = "1011"
 
 print(addBinary(a,b))
