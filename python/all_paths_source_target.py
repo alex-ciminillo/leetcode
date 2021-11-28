@@ -39,27 +39,43 @@
 # The input graph is guaranteed to be a DAG.
 
 
-
+#first attempt, depth-first-search (DFS) with backtracking, recursion
 from typing import List
 
+# def allPathsSourceTarget(graph: List[List[int]]) -> List[List[int]]:
+#     target = len(graph) - 1
+#     results = []
+
+#     def backtrack(currNode, path):
+#             if currNode == target:
+#                 results.append(list(path))
+#                 return
+#             for node in graph[currNode]:
+#                 path.append(node)
+#                 backtrack(path[-1], path)
+#                 path.pop()
+    
+#     path = [0]
+#     backtrack(path[-1], path)
+
+#     return results
+
+# BFS, iteration
 def allPathsSourceTarget(graph: List[List[int]]) -> List[List[int]]:
     target = len(graph) - 1
-    results = []
+    q = [[0]]
+    ans = []
 
-    def backtrack(currNode, path):
-            if currNode == target:
-                results.append(list(path))
-                return
-            for node in graph[currNode]:
-                path.append(node)
-                backtrack(path[-1], path)
-                path.pop()
-    
-    path = [0]
-    backtrack(path[-1], path)
+    while q:
+        first = q.pop(0)
+        if first[-1] == target:
+            ans.append(first)
+            continue
 
-    return results
+        for num in graph[first[-1]]:
+            q.append(first + [num])
 
+    return ans
 
 
 graph = [[1,2],[3],[3],[]]
