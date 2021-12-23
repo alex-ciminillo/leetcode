@@ -43,7 +43,7 @@
 #     while i >= 0:
 #         if len(s[i]) != 0:
 #             return len(s[i])
-#         i -= 1
+#         i -= 1 
 
 #optimized even more
 def lengthOfLastWord(s: str) -> int:
