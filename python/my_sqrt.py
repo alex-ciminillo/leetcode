@@ -22,7 +22,7 @@
 #  0 <= x <= 231 - 1
 
 
-
+  
 
 class Solution:
     def mySqrt(self, x):
