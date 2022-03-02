@@ -26,6 +26,7 @@
 
 
 let canConstruct = function(ransomNote, magazine) {
+    
     let mag=Array.from(magazine,String);
     let note=Array.from(ransomNote,String);
     console.log(mag,'mag');
@@ -39,6 +40,7 @@ let canConstruct = function(ransomNote, magazine) {
         map.set(x,1);
     }
 }
+
 for(let x of note){
     if(mag.includes(x)){
         mag.splice(mag.indexOf(x),1);
@@ -48,11 +50,13 @@ for(let x of note){
         return false;
     }
 }
+
 for(let [k,v] of map){
     if(v>0){
         return false;
     }
 } 
+
 return true;
 };
 
