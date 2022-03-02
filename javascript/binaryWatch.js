@@ -34,7 +34,6 @@
 
 const readBinaryWatch = turnedOn => {
     let ret = []
-    
     function toTime(num) {
       const h = num >> 6
       const m = num & (~960)
@@ -43,7 +42,6 @@ const readBinaryWatch = turnedOn => {
       }
       return h + ':' + String(m).padStart(2, '0')
     }
-    
     function countBits(num) {
       let count = 0
       while (num) {
@@ -52,7 +50,6 @@ const readBinaryWatch = turnedOn => {
       }
       return count
     }
-    
     let i = 0
     while (i < 1024) {
       if (countBits(i) === turnedOn) {
@@ -61,7 +58,6 @@ const readBinaryWatch = turnedOn => {
       }
       i++
     }
-   
     return ret;
   }
 
