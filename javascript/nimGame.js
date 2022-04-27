@@ -5,7 +5,6 @@
 // On each turn, the person whose turn it is will remove 1 to 3 stones from the heap.
 // The one who removes the last stone is the winner.
 // Given n, the number of stones in the heap, return true if you can win the game assuming both you and your friend play optimally, otherwise return false.
-
  
 
 // Example 1:
@@ -37,10 +36,12 @@
 
 const canWinNim = (n) => {
     for (let i = 0; i <= n; i++) {
+        
         if (n - 4 * i >= 1 && n - 4 * i <= 3) {
             return true;
         }
     }
+
     return false;
 };
 
