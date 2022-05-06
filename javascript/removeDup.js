@@ -3,13 +3,10 @@
  
 
 // Example 1:
-
-
 // Input: head = [1,1,2]
 // Output: [1,2]
+
 // Example 2:
-
-
 // Input: head = [1,1,2,3,3]
 // Output: [1,2,3]
  
@@ -22,10 +19,13 @@
 
 var deleteDuplicates = function(head) {
     if(!head) return head
+    
     var cur = head
+
     while(cur!=null && cur.next != null) {
         if(cur.next.val === cur.val) { cur.next = cur.next.next }
         else { cur = cur.next }
     }
+
     return head
 }
