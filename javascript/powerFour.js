@@ -5,15 +5,14 @@
  
 
 // Example 1:
-
 // Input: n = 16
 // Output: true
-// Example 2:
 
+// Example 2:
 // Input: n = 5
 // Output: false
-// Example 3:
 
+// Example 3:
 // Input: n = 1
 // Output: true
  
@@ -24,7 +23,9 @@
 
 
 var isPowerOfFour = function(num) {
+
     return /^1(00)*$/.test(num.toString(2));  
+
   }; 
 
 
