@@ -5,11 +5,10 @@
  
 
 // Example 1:
-
 // Input: nums = [3,2,3]
 // Output: 3
-// Example 2:
 
+// Example 2:
 // Input: nums = [2,2,1,1,1,2,2]
 // Output: 2
  
@@ -31,13 +30,16 @@ let majorityElement = function(nums) {
     let n=nums.length;
     let final=0;
     let num=n/2;
+
     if(n===1){
         return nums[0];
     }
+
     let map=new Map();
     
     for(let i=0;i<n;i++){
-        if(map.has(nums[i])){
+
+    if(map.has(nums[i])){
         map.set(nums[i],map.get(nums[i])+1);
     }
     else{
@@ -45,12 +47,14 @@ let majorityElement = function(nums) {
     }
 }
     console.log(map);
+
     for(let [k,v] of map){
         if(v>num){
             final=k;
             break;
         }
     }
+    
     return final;
 };
 
