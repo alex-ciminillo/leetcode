@@ -7,11 +7,10 @@
  
 
 // Example 1:
-
 // Input: currentState = "++++"
 // Output: ["--++","+--+","++--"]
-// Example 2:
 
+// Example 2:
 // Input: currentState = "+"
 // Output: []
  
@@ -29,21 +28,16 @@
 
 var generatePossibleNextMoves = function(s) {
     const res = [];
-    
     for (let i = 1; i < s.length; i++) {
         const prevChar = s.charAt(i - 1);
         const currChar = s.charAt(i);
-        
         if (prevChar == "+" && currChar == "+") {
-            
             const front = s.substring(0, i - 1);
             const back = s.substring(i + 1);
             const flipped = front + "--" + back;
-            
             res.push(flipped);
         }
     }
-    
     return res;
 };
 
