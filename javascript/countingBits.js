@@ -3,15 +3,14 @@
  
 
 // Example 1:
-
 // Input: n = 2
 // Output: [0,1,1]
 // Explanation:
 // 0 --> 0
 // 1 --> 1
 // 2 --> 10
-// Example 2:
 
+// Example 2:
 // Input: n = 5
 // Output: [0,1,1,2,1,2]
 // Explanation:
@@ -39,10 +38,13 @@
 
 var countBits = function(num) {
     let bits = [];
+
     for (let i = 0; i <= num; i++)
-        // remove 0 from bits
+
         bits.push(Number(i).toString(2).replace(/0/g, '').length);
+
     return bits;
+
 };
 
 
