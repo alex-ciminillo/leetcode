@@ -1,6 +1,9 @@
 var calPoints = function(ops) {
+
     let stack = [];
+
     ops.forEach((op)=>{
+
         if(parseInt(op)){
             stack.push(parseInt(op))
         }
@@ -13,7 +16,9 @@ var calPoints = function(ops) {
         else if(op === 'C'){
             stack.pop();
         }
+
     })
-    console.log(stack)
+
     return stack.reduce((a,v)=>a+v,0)
+    
 };
